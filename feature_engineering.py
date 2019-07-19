@@ -4,7 +4,13 @@ import nltk
 import numpy as np
 from sklearn import feature_extraction
 from tqdm import tqdm
+import pandas as pd
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from sklearn.metrics.pairwise import cosine_similarity
 
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('vader_lexicon')
 
 _wnl = nltk.WordNetLemmatizer()
 
@@ -68,13 +74,43 @@ def refuting_features(headlines, bodies):
         'pranks',
         'retract'
     ]
-    X = []
+    X_head, X_body = [],[]
     for i, (headline, body) in tqdm(enumerate(zip(headlines, bodies))):
         clean_headline = clean(headline)
+        clean_body = clean(body)
         clean_headline = get_tokenized_lemmas(clean_headline)
-        features = [1 if word in clean_headline else 0 for word in _refuting_words]
-        X.append(features)
-    return X
+        clean_body = get_tokenized_lemmas(clean_body)
+        feature1 = [1 if word in clean_headline else 0 for word in _refuting_words]
+        # add body refuting features
+        feature2 = [1 if word in clean_body else 0 for word in _refuting_words]
+        X_head.append(feature1)
+        X_body.append(feature2)
+    return np.array(X_head),np.array(X_body)
+
+
+sid = SentimentIntensityAnalyzer()
+    
+def sentiment_features(headlines, bodies):
+    def compute_sentiment(text):
+        sentences = nltk.tokenize.sent_tokenize(text)
+        result = []
+        for sentence in sentences:
+            vs = sid.polarity_scores(sentence)
+            result.append(vs)
+        mean = pd.DataFrame(result).mean()
+        return mean[['compound','neg','neu','pos']].values
+
+    X_head, X_body, X_cos = [],[],[]
+    for i, (headline, body) in tqdm(enumerate(zip(headlines, bodies))):
+        clean_headline = clean(headline)
+        clean_body = clean(body)
+        feat_head = compute_sentiment(clean_headline)
+        feat_body=  compute_sentiment(clean_body)
+        sentiment_cos = cosine_similarity(feat_head.reshape(1, -1),feat_body.reshape(1, -1) )[0]
+        X_head.append(feat_head)
+        X_body.append(feat_body)
+        X_cos.append(sentiment_cos)
+    return np.array(X_head),np.array(X_body),np.array(X_cos)
 
 
 def polarity_features(headlines, bodies):
