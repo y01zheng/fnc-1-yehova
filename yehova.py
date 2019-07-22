@@ -1,6 +1,6 @@
 import sys
 import numpy as np
-
+import csv
 from sklearn.ensemble import GradientBoostingClassifier
 from feature_engineering import refuting_features, polarity_features, hand_features, gen_or_load_feats
 from feature_engineering import word_overlap_features, sentiment_features
@@ -59,15 +59,10 @@ if __name__ == "__main__":
 
     X_competition, y_competition = generate_features(competition_dataset.stances, competition_dataset, "competition",bow_vectorizer, tfreq_vectorizer, tfidf_vectorizer)
 
-
+    headline,bodyId,stance = [],[],[]
     for s in competition_dataset.stances:
-        with open("body_id.csv", 'a+',encoding='utf-8') as f:
-            f.write(str(s["Body ID"])+"\n")
-
-
-    for s in competition_dataset.stances:
-        with open("headline.csv", 'a+',encoding='utf-8') as f:
-            f.write(s['Headline']+"\n")
+        headline.append(s['Headline'])
+        bodyId.append(s["Body ID"])
 
     Xs = dict()
     ys = dict()
@@ -125,10 +120,13 @@ if __name__ == "__main__":
     predicted = [LABELS[int(a)] for a in best_fold.predict(X_competition)]
     actual = [LABELS[int(a)] for a in y_competition]
 
-
-    for line in predicted:
-        with open("stance.csv", 'a+',encoding='utf-8') as f:
-            f.write(line +"\n")
+    output = np.c_[np.array(headline),np.array(bodyId),np.array(predicted)]
+    
+    with open("submission.csv", 'w',encoding='utf-8') as csvfile:
+        fieldnames = ['Headline','Body ID','Stance']
+        writer = csv.writer(csvfile)
+        writer.writerow(fieldnames)
+        writer.writerows(output)
             
     print("Scores on the test set")
     report_score(actual,predicted)
