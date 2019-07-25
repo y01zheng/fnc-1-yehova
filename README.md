@@ -10,3 +10,6 @@ The FNC dataset is inlcuded as a submodule and can be FNC Dataset is included as
 
 ## run comparative method
     python3 randomForest.py
+
+## tune hyperparameters
+    python3 auto_tuning_params.py
