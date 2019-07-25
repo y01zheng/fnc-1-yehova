@@ -23,7 +23,7 @@ def generate_features(stances,dataset,name,bow_vectorizer, tfreq_vectorizer, tfi
 
     X_overlap = gen_or_load_feats(word_overlap_features, h, b, "features/overlap."+name+".npy")
     
-    # X_refuting_body: we add a new refuting feature about the existence of refuting words in the body
+    # X_refuting_body: I add a new refuting feature about the existence of refuting words in the body
     X_refuting_head, X_refuting_body = refuting_features(h, b)
     
     X_polarity = gen_or_load_feats(polarity_features, h, b, "features/polarity."+name+".npy")
