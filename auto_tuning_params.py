@@ -91,6 +91,6 @@ if __name__ == "__main__":
     clf = GridSearchCV(gbc, params, cv=10)
     clf.fit(X_training, y_training)
     
-    print(gs.best_score_)
-    print(gs.best_params_)
+    print(clf.best_score_)
+    print(clf.best_params_)
         
