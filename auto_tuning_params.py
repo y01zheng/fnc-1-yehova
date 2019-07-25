@@ -86,7 +86,7 @@ if __name__ == "__main__":
     # Load/Precompute all features now
     X_holdout,y_holdout = generate_features(hold_out_stances,d,"holdout",bow_vectorizer, tfreq_vectorizer, tfidf_vectorizer)
            
-    params = {'n_estimators':[y for y in range(10, 500, 10) ],'learning_rate':[0.01, 0.02, 0.05, 0.1],'max_depth':[x for x in range(2,10)]}
+    params = {'n_estimators':[10,40,90,120,150,170,200],'learning_rate':[0.01, 0.02, 0.05, 0.1],'max_depth':[2,3,4,5]}
     gbc = GradientBoostingClassifier(random_state=14128, verbose=True)
     clf = GridSearchCV(gbc, params, cv=10)
     clf.fit(X_training, y_training)
