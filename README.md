@@ -18,4 +18,4 @@ Before running, you should set the ranges of hyperparameters according to your c
 
     or 
     
-    sh auto_tuning_scipt.sh (using scipt to run different hyperparameter settings)
+    sh auto_tuning_scipt.sh (using scipt)
