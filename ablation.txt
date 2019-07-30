@@ -1,4 +1,4 @@
-yehova-0£º
+## yehova-0
 n_estimators=200 max_depth =2 learning_rate =0.1
 Scores on the test set
 -------------------------------------------------------------
@@ -15,7 +15,7 @@ Scores on the test set
 Score: 8761.75 out of 11651.25  (75.20008582770089%)
 
 
-yehova-1£º
+## yehova-1
 n_estimators=200 max_depth =2 learning_rate =0.1
 Scores on the test set
 -------------------------------------------------------------
@@ -32,7 +32,7 @@ Scores on the test set
 Score: 8754.5 out of 11651.25   (75.13786074455531%)
 
 
-yehova-2£º
+## yehova-2
 n_estimators=200 max_depth =2 learning_rate =0.1
 Scores on the test set
 -------------------------------------------------------------
@@ -49,7 +49,7 @@ Scores on the test set
 Score: 8816.75 out of 11651.25  (75.67213818259843%)
 
 
-yehova-3£º
+## yehova-3
 n_estimators=200 max_depth =2 learning_rate =0.1
 Scores on the test set
 -------------------------------------------------------------
@@ -66,7 +66,7 @@ Scores on the test set
 Score: 8763.0 out of 11651.25   (75.2108142903122%)
 
 
-yehova-4£º
+## yehova-4
 n_estimators=200 max_depth =2 learning_rate =0.1
 Scores on the test set
 -------------------------------------------------------------
@@ -83,7 +83,7 @@ Scores on the test set
 Score: 8611.25 out of 11651.25  (73.90837892929943%)
 
 
-yehova-5£º
+## yehova-5
 n_estimators=200 max_depth =2 learning_rate =0.05
 Scores on the test set
 -------------------------------------------------------------
@@ -100,7 +100,7 @@ Scores on the test set
 Score: 9171.75 out of 11651.25  (78.71902156420985%)
 
 
-yehova-6£º
+## yehova-6
 n_estimators=200 max_depth =2 learning_rate =0.05
 Scores on the test set
 -------------------------------------------------------------
@@ -118,7 +118,7 @@ Score: 8845.75 out of 11651.25  (75.92103851518077%)
 
 
 
-yehova-7£º
+## yehova-7
 n_estimators=200 max_depth =3 learning_rate =0.05
 Scores on the test set
 -------------------------------------------------------------
@@ -135,7 +135,7 @@ Scores on the test set
 Score: 9181.25 out of 11651.25  (78.80055788005579%)
 
 
-yehova-8£º
+## yehova-8
 n_estimators=270 max_depth =3 learning_rate =0.05
 Scores on the test set
 -------------------------------------------------------------
@@ -151,7 +151,7 @@ Scores on the test set
 -------------------------------------------------------------
 Score: 8839.5 out of 11651.25   (75.86739620212424%)
 
-yehova-9£º
+## yehova-9
 n_estimators=100 max_depth =3 learning_rate =0.04
 Scores on the test set
 -------------------------------------------------------------
